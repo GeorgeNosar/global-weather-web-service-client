@@ -1,6 +1,5 @@
 import NET.webserviceX.www.GlobalWeatherLocator;
 import NET.webserviceX.www.GlobalWeatherSoap;
-import NET.webserviceX.www.GlobalWeatherSoapProxy;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,6 +31,7 @@ public class WeatherWebServiceClient extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String country = request.getParameter("country");
+		String city = request.getParameter("city");
 		
 		GlobalWeatherLocator locator = new GlobalWeatherLocator();
 		GlobalWeatherSoap soap = null;
@@ -42,11 +42,20 @@ public class WeatherWebServiceClient extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		String result = soap.getCitiesByCountry(country);
+		String result = "";
+		if(city.isEmpty()) {
+			//System.out.println("1");
+			result = soap.getCitiesByCountry(country);
+		}
+		else {
+			//System.out.println("2");
+			result = soap.getWeather(city, country);
+		}
 		
 		PrintWriter out = response.getWriter();
 		out.println(result);
 		out.close();
 	}
-
+	
 }
+
