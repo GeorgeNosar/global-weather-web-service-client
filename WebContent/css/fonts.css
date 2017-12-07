@@ -1,0 +1,9 @@
+@font-face {
+	font-family: "Exo2Bold";
+	src: url("../fonts/Exo2Bold/Exo2Bold.eot");
+	src: url("../fonts/Exo2Bold/Exo2Bold.eot?#iefix")format("embedded-opentype"),
+	url("../fonts/Exo2Bold/Exo2Bold.woff") format("woff"),
+	url("../fonts/Exo2Bold/Exo2Bold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
